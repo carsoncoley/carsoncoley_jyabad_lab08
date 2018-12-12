@@ -12,6 +12,17 @@ using namespace std;
  * affect your result. 
  */
 bool isAnagram(string s1, string s2){
+  if(s1.length() != s2.length())
+	  return false;
+  bool isInside = false;
+  for(char c : s1){
+	  for(char c2 : s2){
+		  if(toupper(c) == toupper(c2))
+			  isInside = true;
+	  }
+  }
+  if(!isInside)
+	  return false;
   return true;
 }
 
@@ -19,7 +30,11 @@ bool isAnagram(string s1, string s2){
  * Postcondition: Returns true if s1 is a palindrome, false otherwise
  *You should provide a recursive solution*/
 bool isPalindrome(const string s1){
-
+  for(unsigned int i = 0; i < s1.length()/2 + 1; i++){
+	  if(toupper(s1[i]) != toupper(s1[s1.length()-1-i])){
+		  return false;
+	  }
+  }
   return true;
 }
 
